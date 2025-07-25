@@ -1,0 +1,43 @@
+# -------------------------------
+# Python (FastAPI Backend)
+# -------------------------------
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-log.txt
+*.log
+*.sqlite3
+*.db
+.env
+.venv/
+venv/
+ENV/
+env/
+*.pem
+
+# VS Code settings (optional)
+.vscode/
+
+# PyInstaller
+*.spec
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+.cache
+
+# Pydantic compiled cache
+__pydantic__/

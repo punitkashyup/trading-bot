@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm audit:*)",
+      "Bash(npm update)",
+      "Bash(timeout 30s npm run dev)",
+      "Bash(ls:*)",
+      "Bash(rm:*)",
+      "Bash(sudo apt:*)",
+      "Bash(sudo apt install:*)",
+      "Bash(chmod:*)",
+      "Bash(find:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(timeout:*)",
+      "Bash(grep:*)",
+      "Bash(touch:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(pkill:*)",
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "mcp__magic__getUIComponents",
+      "mcp__magic__getComponents",
+      "mcp__magic__getSpecialEffects",
+      "mcp__magic__getTextAnimations",
+      "mcp__magic__getButtons",
+      "mcp__magic__getBackgrounds",
+      "Bash(npx:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run type-check:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": []
+  }
+}
