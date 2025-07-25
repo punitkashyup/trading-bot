@@ -20,7 +20,7 @@ import {
   CheckCircle,
   Clock
 } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 interface Strategy {
   id: string

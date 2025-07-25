@@ -27,7 +27,7 @@ import {
   ArrowUpRight,
   ArrowDownRight
 } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 interface PnLDataPoint {
   date: string
