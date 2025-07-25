@@ -139,6 +139,111 @@
   }
 }
 
+/* Panel alignment fixes */
+.panel-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.panel-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Ensure equal height cards */
+.equal-height-grid {
+  display: grid;
+  align-items: stretch;
+}
+
+.equal-height-grid > * {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Improved card spacing */
+.card-spacing {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-spacing {
+    padding: 1.5rem;
+  }
+}
+
+/* Better responsive behavior */
+@media (max-width: 1280px) {
+  .xl\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .xl\:col-span-2 {
+    grid-column: span 1 !important;
+  }
+}
+
+/* Enhanced typography */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Improved card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Better focus states */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+/* Smooth animations */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Better spacing utilities */
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+.space-y-8 > * + * {
+  margin-top: 2rem;
+}
+
+/* Enhanced button styles */
+.btn-modern {
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply btn-modern bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.btn-secondary {
+  @apply btn-modern bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500;
+}
+
 @theme inline {
   @keyframes shimmer-slide {
   to {

@@ -130,19 +130,21 @@ export function TradeTable({ trades, loading }: TradeTableProps) {
 
   if (loading) {
     return (
-      <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 shadow-lg" gradientColor="#f3f4f6" gradientOpacity={0.5}>
-        <CardHeader className="pb-4">
-          <CardTitle className="text-gray-900 text-lg font-semibold flex items-center">
-            <div className="h-6 w-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg mr-3 flex items-center justify-center shadow-md">
-              <Activity className="h-4 w-4 text-white" />
-            </div>
-            Recent Trades
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <LoadingSkeleton type="list" />
-        </CardContent>
-      </MagicCard>
+      <div className="h-full flex flex-col">
+        <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 shadow-lg h-full flex flex-col" gradientColor="#f3f4f6" gradientOpacity={0.5}>
+          <CardHeader className="pb-4 flex-shrink-0">
+            <CardTitle className="text-gray-900 text-lg font-semibold flex items-center">
+              <div className="h-6 w-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg mr-3 flex items-center justify-center shadow-md">
+                <Activity className="h-4 w-4 text-white" />
+              </div>
+              Recent Trades
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex-1 flex flex-col">
+            <LoadingSkeleton type="list" />
+          </CardContent>
+        </MagicCard>
+      </div>
     )
   }
 
@@ -151,8 +153,9 @@ export function TradeTable({ trades, loading }: TradeTableProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.2 }}
+      className="h-full flex flex-col"
     >
-      <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300" gradientColor="#f3f4f6" gradientOpacity={0.5}>
+      <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col" gradientColor="#f3f4f6" gradientOpacity={0.5}>
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between">
             <CardTitle className="text-gray-900 text-lg font-semibold flex items-center">
@@ -179,54 +182,56 @@ export function TradeTable({ trades, loading }: TradeTableProps) {
           </div>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className="flex-1 flex flex-col">
           {sortedTrades.length === 0 ? (
-            <SimpleEmptyState type="trades" />
+            <div className="flex-1 flex items-center justify-center">
+              <SimpleEmptyState type="trades" />
+            </div>
           ) : (
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto flex-1">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-white/10">
-                    <TableHead className="text-white/70">Strategy</TableHead>
-                    <TableHead className="text-white/70">
+                  <TableRow className="border-white/20 hover:bg-white/5">
+                    <TableHead className="text-white/80 font-semibold">Strategy</TableHead>
+                    <TableHead className="text-white/80 font-semibold">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => handleSort('symbol')}
-                        className="text-white/70 hover:text-white p-0 h-auto"
+                        className="text-white/80 hover:text-white p-0 h-auto font-semibold"
                       >
                         Symbol
-                        <ArrowUpDown className="ml-1 h-3 w-3" />
+                        <ArrowUpDown className="ml-2 h-3 w-3" />
                       </Button>
                     </TableHead>
-                    <TableHead className="text-white/70">Type</TableHead>
-                    <TableHead className="text-white/70">Mode</TableHead>
-                    <TableHead className="text-white/70">
+                    <TableHead className="text-white/80 font-semibold">Type</TableHead>
+                    <TableHead className="text-white/80 font-semibold">Mode</TableHead>
+                    <TableHead className="text-white/80 font-semibold">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => handleSort('entry_time')}
-                        className="text-white/70 hover:text-white p-0 h-auto"
+                        className="text-white/80 hover:text-white p-0 h-auto font-semibold"
                       >
                         Entry Time
-                        <ArrowUpDown className="ml-1 h-3 w-3" />
+                        <ArrowUpDown className="ml-2 h-3 w-3" />
                       </Button>
                     </TableHead>
-                    <TableHead className="text-white/70 text-right">Entry Price</TableHead>
-                    <TableHead className="text-white/70 text-right">Exit Price</TableHead>
-                    <TableHead className="text-white/70">
+                    <TableHead className="text-white/80 text-right font-semibold">Entry Price</TableHead>
+                    <TableHead className="text-white/80 text-right font-semibold">Exit Price</TableHead>
+                    <TableHead className="text-white/80 font-semibold">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => handleSort('pnl')}
-                        className="text-white/70 hover:text-white p-0 h-auto"
+                        className="text-white/80 hover:text-white p-0 h-auto font-semibold"
                       >
                         P&L
-                        <ArrowUpDown className="ml-1 h-3 w-3" />
+                        <ArrowUpDown className="ml-2 h-3 w-3" />
                       </Button>
                     </TableHead>
-                    <TableHead className="text-white/70">Status</TableHead>
-                    <TableHead className="text-white/70"></TableHead>
+                    <TableHead className="text-white/80 font-semibold">Status</TableHead>
+                    <TableHead className="text-white/80"></TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

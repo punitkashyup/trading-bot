@@ -111,18 +111,18 @@ export default function Dashboard() {
       {/* Main Dashboard */}
       <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Dashboard Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <MagicCard className="bg-white/90 backdrop-blur-sm border border-gray-200/60 p-4 shadow-lg hover:shadow-xl transition-all duration-300" gradientColor="#f3f4f6" gradientOpacity={0.4}>
-              <div className="flex items-center justify-between">
-                <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="h-full">
+            <MagicCard className="bg-white/90 backdrop-blur-sm border border-gray-200/60 p-4 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex items-center" gradientColor="#f3f4f6" gradientOpacity={0.4}>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex-1">
                   <p className="text-gray-500 text-xs font-medium uppercase tracking-wide">Total P&L</p>
                   <p className={`text-xl font-bold mt-1 ${totalPnL >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                     ₹<NumberTicker value={totalPnL} />
                   </p>
                 </div>
-                <motion.div 
-                  className={`h-10 w-10 rounded-lg flex items-center justify-center shadow-lg ${totalPnL >= 0 ? 'bg-gradient-to-br from-green-500 to-green-600' : 'bg-gradient-to-br from-red-500 to-red-600'}`}
+                <motion.div
+                  className={`h-10 w-10 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0 ml-3 ${totalPnL >= 0 ? 'bg-gradient-to-br from-green-500 to-green-600' : 'bg-gradient-to-br from-red-500 to-red-600'}`}
                   whileHover={{ rotate: 5 }}
                 >
                   <TrendingUp className="h-5 w-5 text-white" />
@@ -131,15 +131,15 @@ export default function Dashboard() {
             </MagicCard>
           </motion.div>
 
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <MagicCard className="bg-white/90 backdrop-blur-sm border border-gray-200/60 p-4 shadow-lg hover:shadow-xl transition-all duration-300" gradientColor="#f3f4f6" gradientOpacity={0.4}>
-              <div className="flex items-center justify-between">
-                <div>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="h-full">
+            <MagicCard className="bg-white/90 backdrop-blur-sm border border-gray-200/60 p-4 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex items-center" gradientColor="#f3f4f6" gradientOpacity={0.4}>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex-1">
                   <p className="text-gray-500 text-xs font-medium uppercase tracking-wide">Total Trades</p>
                   <p className="text-xl font-bold text-gray-900 mt-1"><NumberTicker value={totalTrades} /></p>
                 </div>
-                <motion.div 
-                  className="h-10 w-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg"
+                <motion.div
+                  className="h-10 w-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0 ml-3"
                   whileHover={{ rotate: 5 }}
                 >
                   <Activity className="h-5 w-5 text-white" />
@@ -148,15 +148,15 @@ export default function Dashboard() {
             </MagicCard>
           </motion.div>
 
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <MagicCard className="bg-white/90 backdrop-blur-sm border border-gray-200/60 p-4 shadow-lg hover:shadow-xl transition-all duration-300" gradientColor="#f3f4f6" gradientOpacity={0.4}>
-              <div className="flex items-center justify-between">
-                <div>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="h-full">
+            <MagicCard className="bg-white/90 backdrop-blur-sm border border-gray-200/60 p-4 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex items-center" gradientColor="#f3f4f6" gradientOpacity={0.4}>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex-1">
                   <p className="text-gray-500 text-xs font-medium uppercase tracking-wide">Active Strategies</p>
                   <p className="text-xl font-bold text-gray-900 mt-1"><NumberTicker value={activeStrategies} /></p>
                 </div>
-                <motion.div 
-                  className="h-10 w-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg"
+                <motion.div
+                  className="h-10 w-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0 ml-3"
                   whileHover={{ rotate: 5 }}
                 >
                   <Activity className="h-5 w-5 text-white" />
@@ -165,15 +165,15 @@ export default function Dashboard() {
             </MagicCard>
           </motion.div>
 
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <MagicCard className="bg-white/90 backdrop-blur-sm border border-gray-200/60 p-4 shadow-lg hover:shadow-xl transition-all duration-300" gradientColor="#f3f4f6" gradientOpacity={0.4}>
-              <div className="flex items-center justify-between">
-                <div>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="h-full">
+            <MagicCard className="bg-white/90 backdrop-blur-sm border border-gray-200/60 p-4 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex items-center" gradientColor="#f3f4f6" gradientOpacity={0.4}>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex-1">
                   <p className="text-gray-500 text-xs font-medium uppercase tracking-wide">Live Strategies</p>
                   <p className="text-xl font-bold text-gray-900 mt-1"><NumberTicker value={liveStrategies} /></p>
                 </div>
-                <motion.div 
-                  className="h-10 w-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-lg"
+                <motion.div
+                  className="h-10 w-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0 ml-3"
                   whileHover={{ rotate: 5 }}
                 >
                   <AlertTriangle className="h-5 w-5 text-white" />
@@ -184,51 +184,61 @@ export default function Dashboard() {
         </div>
 
         {/* Strategy Management & Real-time Feed */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-8">
           {/* Strategies */}
-          <div className="xl:col-span-2">
-            <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 p-6 shadow-lg hover:shadow-xl transition-all duration-300" gradientColor="#f3f4f6" gradientOpacity={0.5}>
-              <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+          <div className="xl:col-span-2 flex flex-col">
+            <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex-1 flex flex-col" gradientColor="#f3f4f6" gradientOpacity={0.5}>
+              <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center flex-shrink-0">
                 <div className="h-6 w-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg mr-3 flex items-center justify-center shadow-md">
                   <Activity className="h-4 w-4 text-white" />
                 </div>
                 Strategy Management
               </h2>
-              
-              {strategiesLoading ? (
-                <LoadingSkeleton type="card" />
-              ) : strategies && strategies.length > 0 ? (
-                <div className="space-y-6">
-                  {strategies.map((strategy) => (
-                    <StrategyCard
-                      key={strategy.id}
-                      strategy={strategy}
-                      onUpdate={refetchStrategies}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <SimpleEmptyState type="strategies" />
-              )}
+
+              <div className="flex-1 flex flex-col">
+                {strategiesLoading ? (
+                  <LoadingSkeleton type="card" />
+                ) : strategies && strategies.length > 0 ? (
+                  <div className="space-y-6 flex-1">
+                    {strategies.map((strategy) => (
+                      <StrategyCard
+                        key={strategy.id}
+                        strategy={strategy}
+                        onUpdate={refetchStrategies}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex-1 flex items-center justify-center">
+                    <SimpleEmptyState type="strategies" />
+                  </div>
+                )}
+              </div>
             </MagicCard>
           </div>
 
           {/* Real-time Market Feed */}
-          <div>
-            <RealTimeFeed />
+          <div className="flex flex-col">
+            <div className="flex-1">
+              <RealTimeFeed />
+            </div>
           </div>
         </div>
 
         {/* P&L Tracker and Trade Table */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
           {/* P&L Tracker */}
-          <PnLTracker data={(dashboardData?.daily_pnl || []).map((item, index, arr) => ({
-            ...item,
-            cumulative_pnl: arr.slice(0, index + 1).reduce((sum, d) => sum + d.total_pnl, 0)
-          }))} />
-          
+          <div className="flex flex-col">
+            <PnLTracker data={(dashboardData?.daily_pnl || []).map((item, index, arr) => ({
+              ...item,
+              cumulative_pnl: arr.slice(0, index + 1).reduce((sum, d) => sum + d.total_pnl, 0)
+            }))} />
+          </div>
+
           {/* Recent Trades */}
-          <TradeTable trades={trades || []} loading={tradesLoading} />
+          <div className="flex flex-col">
+            <TradeTable trades={trades || []} loading={tradesLoading} />
+          </div>
         </div>
       </main>
     </div>

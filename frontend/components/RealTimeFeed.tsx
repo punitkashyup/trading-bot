@@ -116,15 +116,16 @@ export function RealTimeFeed({ symbols = [], maxItems = 50 }: RealTimeFeedProps)
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.3 }}
+      className="h-full flex flex-col"
     >
-      <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300" gradientColor="#f3f4f6" gradientOpacity={0.6}>
-        <CardHeader className="pb-4">
+      <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col" gradientColor="#f3f4f6" gradientOpacity={0.6}>
+        <CardHeader className="pb-4 pt-5 px-6">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-gray-900 flex items-center space-x-3 text-lg font-semibold">
-              <div className="h-6 w-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-md">
+            <CardTitle className="text-gray-900 flex items-center text-lg font-semibold">
+              <div className="h-6 w-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-md mr-3">
                 <Activity className="h-4 w-4 text-white" />
               </div>
-              <span>Live Market Feed</span>
+              <span className="mr-2">Live Market Feed</span>
               <div className={`h-2 w-2 rounded-full ${
                 isConnected ? 'bg-green-500 animate-pulse shadow-lg shadow-green-500/50' : 'bg-red-500 shadow-lg shadow-red-500/50'
               }`} />
@@ -171,13 +172,13 @@ export function RealTimeFeed({ symbols = [], maxItems = 50 }: RealTimeFeedProps)
           </div>
         </CardHeader>
 
-        <CardContent className="pt-0">
-          <div className="space-y-2 max-h-80 overflow-y-auto custom-scrollbar">
+        <CardContent className="pt-0 px-6 pb-6 flex-1 flex flex-col">
+          <div className="space-y-2 flex-1 overflow-y-auto custom-scrollbar">
             <AnimatePresence>
               {marketData.length === 0 ? (
-                <div className="text-center py-8">
-                  <Clock className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500 text-sm">
+                <div className="text-center py-12">
+                  <Clock className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+                  <p className="text-gray-500 text-base font-medium">
                     {isPaused ? 'Feed paused' : 'Waiting for market data...'}
                   </p>
                 </div>
@@ -188,59 +189,55 @@ export function RealTimeFeed({ symbols = [], maxItems = 50 }: RealTimeFeedProps)
                     initial={{ opacity: 0, x: -20, scale: 0.95 }}
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     exit={{ opacity: 0, x: 20, scale: 0.95 }}
-                    transition={{ 
+                    transition={{
                       duration: 0.3,
                       type: "spring",
                       stiffness: 100
                     }}
-                    className="bg-gray-50 hover:bg-gray-100 rounded-lg p-3 border border-gray-200 hover:border-gray-300 transition-all duration-200"
+                    className="bg-white hover:bg-gray-50 rounded-lg p-3 border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
                   >
+                    {/* Single line layout */}
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <Badge 
-                          variant="outline" 
-                          className="bg-blue-50 text-blue-700 border-blue-200 font-mono text-xs px-2 py-1"
+                      <div className="flex items-center space-x-4 flex-1">
+                        <Badge
+                          variant="outline"
+                          className="bg-blue-50 text-blue-700 border-blue-200 font-mono text-xs px-2 py-1 rounded font-semibold flex-shrink-0"
                         >
                           {data.symbol}
                         </Badge>
-                        
-                        <div className="flex items-center space-x-2">
-                          <span className="text-gray-900 font-bold text-sm">
+
+                        <div className="flex items-center space-x-3 flex-1">
+                          <span className="text-gray-900 font-bold text-base">
                             {formatPrice(data.price)}
                           </span>
-                          
-                          <div className={`flex items-center space-x-1 ${getChangeColor(data.change)}`}>
+
+                          <div className={`flex items-center space-x-1 px-2 py-0.5 rounded ${
+                            data.change >= 0
+                              ? 'bg-green-50 text-green-700'
+                              : 'bg-red-50 text-red-700'
+                          }`}>
                             {getChangeIcon(data.change)}
-                            <span className="text-xs font-medium">
+                            <span className="text-xs font-semibold">
                               {data.change >= 0 ? '+' : ''}{data.change.toFixed(2)}
                             </span>
                             <span className="text-xs">
                               ({data.change_percent >= 0 ? '+' : ''}{data.change_percent.toFixed(2)}%)
                             </span>
                           </div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center space-x-3 text-xs text-gray-500">
-                        <div className="text-right">
-                          <div>Vol: {formatVolume(data.volume)}</div>
-                          <div>B/A: {formatPrice(data.bid)}/{formatPrice(data.ask)}</div>
-                        </div>
-                        
-                        <div className="text-right">
-                          <div>H: {formatPrice(data.high)}</div>
-                          <div>L: {formatPrice(data.low)}</div>
-                        </div>
-                        
-                        <div className="text-right">
-                          <div className="font-mono text-gray-400">
-                            {new Date(data.timestamp).toLocaleTimeString('en-IN', {
-                              hour: '2-digit',
-                              minute: '2-digit',
-                              second: '2-digit'
-                            })}
+
+                          <div className="hidden md:flex items-center space-x-3 text-xs text-gray-500 ml-auto">
+                            <span>Vol: {formatVolume(data.volume)}</span>
+                            <span>B/A: {formatPrice(data.bid)}/{formatPrice(data.ask)}</span>
+                            <span>H/L: {formatPrice(data.high)}/{formatPrice(data.low)}</span>
                           </div>
                         </div>
+                      </div>
+
+                      <div className="text-xs text-gray-400 font-mono flex-shrink-0 ml-2">
+                        {new Date(data.timestamp).toLocaleTimeString('en-IN', {
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        })}
                       </div>
                     </div>
                   </motion.div>
@@ -250,18 +247,30 @@ export function RealTimeFeed({ symbols = [], maxItems = 50 }: RealTimeFeedProps)
           </div>
           
           {/* Connection Status */}
-          <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-200">
-            <div className="flex items-center space-x-2 text-xs text-gray-600">
-              <div className={`h-2 w-2 rounded-full ${
-                isConnected ? 'bg-green-500 shadow-sm shadow-green-500/50' : 'bg-red-500 shadow-sm shadow-red-500/50'
-              }`} />
-              <span>
-                {isConnected ? 'Connected to DhanHQ WebSocket' : 'Disconnected'}
+          <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-200">
+            <div className="flex items-center space-x-3">
+              <div className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg ${
+                isConnected
+                  ? 'bg-green-50 text-green-700 border border-green-200'
+                  : 'bg-red-50 text-red-700 border border-red-200'
+              }`}>
+                <div className={`h-2 w-2 rounded-full ${
+                  isConnected ? 'bg-green-500 animate-pulse' : 'bg-red-500'
+                }`} />
+                <span className="text-sm font-semibold">
+                  {isConnected ? 'Live' : 'Offline'}
+                </span>
+              </div>
+              <span className="text-sm text-gray-600 font-medium">
+                {isConnected ? 'DhanHQ WebSocket' : 'Connection Lost'}
               </span>
             </div>
-            
-            <div className="text-xs text-gray-500">
-              <NumberTicker value={marketData.length} /> updates received
+
+            <div className="flex items-center space-x-2 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200">
+              <span className="text-sm text-gray-600 font-medium">Updates:</span>
+              <span className="text-sm font-bold text-gray-900">
+                <NumberTicker value={marketData.length} />
+              </span>
             </div>
           </div>
         </CardContent>

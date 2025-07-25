@@ -246,8 +246,9 @@ export function PnLTracker({ data }: PnLTrackerProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 }}
+      className="h-full flex flex-col"
     >
-      <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300" gradientColor="#f3f4f6" gradientOpacity={0.5}>
+      <MagicCard className="bg-white/95 backdrop-blur-sm border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col" gradientColor="#f3f4f6" gradientOpacity={0.5}>
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-gray-900 flex items-center space-x-3 text-lg font-semibold">
@@ -291,62 +292,62 @@ export function PnLTracker({ data }: PnLTrackerProps) {
           </div>
         </CardHeader>
 
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-6 flex-1 flex flex-col">
           {/* Summary Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 flex-shrink-0">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 text-sm font-medium">Total P&L</span>
+                <span className="text-gray-600 text-xs font-medium">Total P&L</span>
                 {totalPnL >= 0 ? (
-                  <ArrowUpRight className="h-4 w-4 text-green-600" />
+                  <ArrowUpRight className="h-3 w-3 text-green-600" />
                 ) : (
-                  <ArrowDownRight className="h-4 w-4 text-red-600" />
+                  <ArrowDownRight className="h-3 w-3 text-red-600" />
                 )}
               </div>
-              <div className={`text-xl font-bold ${
+              <div className={`text-lg font-bold ${
                 totalPnL >= 0 ? 'text-green-600' : 'text-red-600'
               }`}>
                 ₹<NumberTicker value={totalPnL} />
               </div>
             </div>
 
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 text-sm font-medium">Virtual P&L</span>
-                <div className="h-3 w-3 rounded-full bg-blue-500" />
+                <span className="text-gray-600 text-xs font-medium">Virtual P&L</span>
+                <div className="h-2 w-2 rounded-full bg-blue-500" />
               </div>
-              <div className={`text-xl font-bold ${
+              <div className={`text-lg font-bold ${
                 totalVirtualPnL >= 0 ? 'text-green-600' : 'text-red-600'
               }`}>
                 ₹<NumberTicker value={totalVirtualPnL} />
               </div>
             </div>
 
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 text-sm font-medium">Live P&L</span>
-                <div className="h-3 w-3 rounded-full bg-orange-500" />
+                <span className="text-gray-600 text-xs font-medium">Live P&L</span>
+                <div className="h-2 w-2 rounded-full bg-orange-500" />
               </div>
-              <div className={`text-xl font-bold ${
+              <div className={`text-lg font-bold ${
                 totalLivePnL >= 0 ? 'text-green-600' : 'text-red-600'
               }`}>
                 ₹<NumberTicker value={totalLivePnL} />
               </div>
             </div>
 
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 text-sm font-medium">Total Trades</span>
-                <Calendar className="h-4 w-4 text-purple-600" />
+                <span className="text-gray-600 text-xs font-medium">Total Trades</span>
+                <Calendar className="h-3 w-3 text-purple-600" />
               </div>
-              <div className="text-xl font-bold text-gray-900">
+              <div className="text-lg font-bold text-gray-900">
                 <NumberTicker value={totalTrades} />
               </div>
             </div>
           </div>
 
           {/* Chart */}
-          <div className="h-80">
+          <div className="flex-1 min-h-0">
             {filteredData.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 {renderChart()}
@@ -363,29 +364,29 @@ export function PnLTracker({ data }: PnLTrackerProps) {
 
           {/* Best/Worst Day Stats */}
           {filteredData.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 flex-shrink-0">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                 <div className="flex items-center space-x-2 mb-2">
-                  <TrendingUp className="h-4 w-4 text-green-600" />
-                  <span className="text-green-600 font-semibold">Best Day</span>
+                  <TrendingUp className="h-3 w-3 text-green-600" />
+                  <span className="text-green-600 font-semibold text-sm">Best Day</span>
                 </div>
-                <div className="text-gray-900 font-bold text-lg">
+                <div className="text-gray-900 font-bold text-base">
                   ₹<NumberTicker value={bestDay.total_pnl} />
                 </div>
-                <div className="text-gray-600 text-sm">
+                <div className="text-gray-600 text-xs">
                   {new Date(bestDay.date).toLocaleDateString('en-IN')}
                 </div>
               </div>
 
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                 <div className="flex items-center space-x-2 mb-2">
-                  <TrendingDown className="h-4 w-4 text-red-600" />
-                  <span className="text-red-600 font-semibold">Worst Day</span>
+                  <TrendingDown className="h-3 w-3 text-red-600" />
+                  <span className="text-red-600 font-semibold text-sm">Worst Day</span>
                 </div>
-                <div className="text-gray-900 font-bold text-lg">
+                <div className="text-gray-900 font-bold text-base">
                   ₹<NumberTicker value={worstDay.total_pnl} />
                 </div>
-                <div className="text-gray-600 text-sm">
+                <div className="text-gray-600 text-xs">
                   {new Date(worstDay.date).toLocaleDateString('en-IN')}
                 </div>
               </div>
